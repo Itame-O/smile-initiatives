@@ -65,13 +65,15 @@ document.getElementById('volunteer-form').addEventListener('submit', function(e)
     btn.innerText = "Submitting...";
     btn.disabled = true;
 
+    const inputs = this.querySelectorAll('input');
+    const select = this.querySelector('select');
+
     const payload = {
         type: 'volunteer',
-        name: this.querySelectorAll('input')[0].value,
-        age: this.querySelectorAll('input')[1].value,
-        address: this.querySelectorAll('input')[2].value,
-        phone: this.querySelectorAll('input')[3].value,
-        email: this.querySelectorAll('input')[4].value
+        name: inputs[0] ? inputs[0].value : '',
+        phone: inputs[1] ? inputs[1].value : '',
+        email: inputs[2] ? inputs[2].value : '',
+        interest: select ? select.value : ''
     };
 
     fetch(SCRIPT_URL, {
