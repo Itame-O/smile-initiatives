@@ -41,17 +41,22 @@ document.getElementById('candidate-form').addEventListener('submit', function(e)
     })
     .then(res => res.json())
     .then(data => {
-        alert('Application submitted successfully!');
-        this.reset();
-        btn.innerText = "Submit Application";
-        btn.disabled = false;
-    })
-    .catch(err => {
-        alert('Error submitting form. Please try again.');
-        btn.innerText = "Submit Application";
-        btn.disabled = false;
-    });
-});
+            this.innerHTML = `
+              <div style="text-align: center; padding: 2rem 1rem;">
+                <div style="font-size: 3rem; margin-bottom: 0.8rem;">✅</div>
+                <h3 style="color: #0052cc; font-size: 1.4rem; margin-bottom: 0.5rem;">Application Received!</h3>
+                <p style="color: #4a5568; line-height: 1.5; font-size: 0.95rem;">
+                  Thank you for applying! We have received your details and will contact you via email shortly.
+                </p>
+              </div>
+            `;
+        })
+        .catch(err => {
+            alert('Error submitting form. Please try again.');
+            btn.innerText = "Submit Application";
+            btn.disabled = false;
+        });
+
 
 // Handle Volunteer Form Submission
 document.getElementById('volunteer-form').addEventListener('submit', function(e) {
@@ -62,10 +67,11 @@ document.getElementById('volunteer-form').addEventListener('submit', function(e)
 
     const payload = {
         type: 'volunteer',
-        fullName: this.querySelectorAll('input')[0].value,
-        phone: this.querySelectorAll('input')[1].value,
-        email: this.querySelectorAll('input')[2].value,
-        interest: this.querySelector('select').value
+        name: this.querySelectorAll('input')[0].value,
+        age: this.querySelectorAll('input')[1].value,
+        address: this.querySelectorAll('input')[2].value,
+        phone: this.querySelectorAll('input')[3].value,
+        email: this.querySelectorAll('input')[4].value
     };
 
     fetch(SCRIPT_URL, {
@@ -74,15 +80,19 @@ document.getElementById('volunteer-form').addEventListener('submit', function(e)
     })
     .then(res => res.json())
     .then(data => {
-        alert('Volunteer registration successful!');
-        this.reset();
-        btn.innerText = "Join as Volunteer";
-        btn.disabled = false;
+        this.innerHTML = `
+          <div style="text-align: center; padding: 2rem 1rem;">
+            <div style="font-size: 3rem; margin-bottom: 0.8rem;">🙌</div>
+            <h3 style="color: #0052cc; font-size: 1.4rem; margin-bottom: 0.5rem;">Registration Received!</h3>
+            <p style="color: #4a5568; line-height: 1.5; font-size: 0.95rem;">
+              Thank you for volunteering with us! We have received your details and will reach out with orientation info shortly.
+            </p>
+          </div>
+        `;
     })
     .catch(err => {
         alert('Error submitting form. Please try again.');
-        btn.innerText = "Join as Volunteer";
+        btn.innerText = "Submit Application";
         btn.disabled = false;
     });
 });
-
