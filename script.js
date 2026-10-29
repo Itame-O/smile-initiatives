@@ -1,3 +1,46 @@
+// ==========================================
+// 1. Mobile Navigation Hamburger Menu
+// ==========================================
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+  const navItems = document.querySelectorAll(".nav-item");
+
+  // Toggle mobile menu pop-up open/close
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+      menuToggle.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
+    });
+  }
+
+  // Close popup menu automatically when any link is clicked
+  navItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      if (navMenu.classList.contains("active")) {
+        navMenu.classList.remove("active");
+        menuToggle.textContent = "☰";
+      }
+    });
+  });
+});
+
+// ==========================================
+// 2. Initiative Registration Forms (Saved for later)
+// ==========================================
+/* 
+const SCRIPT_URL = "https://script.google.com/...";
+
+function setOffcanvas(type) {
+  const candidateTab = document.getElementById('candidate-tab');
+  // ... (keep all your existing old code here) ...
+}
+
+document.getElementById('candidate-form').addEventListener('submit', ... );
+// ... (keep the rest of the old code here) ...
+
+*/
+
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxLJrjnN3E5e_qoz_0KVd43jkMsjr5ArsYRbx-g56OVfhZzl0k1HAA4DmCMR7aHyiwdQ/exec";
 
 function switchTab(tabName) {
