@@ -113,7 +113,7 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
 }
-========== */
+
 header {
   background-color: var(--white);
   box-shadow: var(--shadow-sm);
@@ -638,7 +638,7 @@ footer {
   display: none;
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--primary);
   cursor: pointer;
   padding: 0.25rem 0.5rem;
@@ -659,35 +659,44 @@ footer {
     font-size: 0.85rem;
   }
 
+  /* Dropdown Menu Overlay */
   nav {
-    position: fixed;
-    top: 70px;
+    display: none;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--white);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    border-top: 1px solid var(--border-color);
   }
 
   nav.active {
-    transform: translateY(0);
+    display: block !important;
   }
 
   .nav-links {
+    display: flex;
     flex-direction: column;
-    padding: 1.5rem 1.25rem;
-    gap: 1.25rem;
-    text-align: left;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    margin: 0;
+    list-style: none;
+  }
+
+  .nav-links li {
+    width: 100%;
   }
 
   .nav-links a {
+    color: var(--text-dark);
     font-size: 1rem;
     font-weight: 600;
     display: block;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    text-decoration: none;
   }
 
   .nav-links li:last-child a {
@@ -695,55 +704,29 @@ footer {
   }
 }
 /* ==========================================================================
-   Mobile Menu Dropdown Fix
+   Header & Logo Fixes
    ========================================================================== */
-@media (max-width: 768px) {
-  .mobile-nav-toggle {
-    display: block;
-    order: 3;
-  }
-
-  .header-btn {
-    order: 2;
-    margin-left: auto;
-    margin-right: 0.5rem;
-    padding: 0.4rem 0.85rem;
-    font-size: 0.85rem;
-  }
-
-  nav {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
-  }
-
-  /* This is what pops the menu down when clicked */
-  nav.active {
-    transform: translateY(0);
-  }
-
-  .nav-links {
-    flex-direction: column;
-    padding: 1.5rem 1.25rem;
-    gap: 1.25rem;
-    text-align: left;
-  }
-
-  .nav-links a {
-    font-size: 1rem;
-    font-weight: 600;
-    display: block;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.75rem;
-  }
-
-  .nav-links li:last-child a {
-    border-bottom: none;
-  }
+header {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
 }
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo img {
+  height: 45px;       /* Controls the logo height nicely */
+  width: auto;        /* Keeps the proper image proportions */
+  display: block;
+}
+
